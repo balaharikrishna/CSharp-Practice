@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Services;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Assignment_1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            IDictionary<string, double> currencyExchangeObj = new Dictionary<string, double>();
+            currencyExchangeObj.Add("INR", 0.012);
+            currencyExchangeObj.Add("EURO", 1.05);
+            currencyExchangeObj.Add("CHF", 1.06);
+            currencyExchangeObj.Add("KWD", 3.26);
+            currencyExchangeObj.Add("GBP", 1.22);
+            currencyExchangeObj.Add("JOD", 1.41);
+            currencyExchangeObj.Add("OMR", 2.60);
+            currencyExchangeObj.Add("BHD", 2.65);
+            currencyExchangeObj.Add("YEN", 0.0073);
+            currencyExchangeObj.Add("YUAN", 0.14);
+            currencyExchangeObj.Add("USD", 1);
+
+            foreach (KeyValuePair<string, double> kvp in currencyExchangeObj )
+                Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+
+            Console.WriteLine("Available Exchanges:");
+            Console.WriteLine("IndianRupee(INR),Euro(EUR),SwissFranc(CHF),KuwaitDinar(KWD)\n,BritishPound(GBP),JordanianDinar(JOD),OmaniRial(OMR),\nBahraini Dinar(BHD),Japanese(YEN),Chinese(YUAN)");
+            Console.WriteLine("Please enter Only short Forms of the Currencies like ..INR,EUR etc.");
+            Console.WriteLine("Please enter Currency that you need to be convert From");
+            string From_CUR = Console.ReadLine().ToUpper();
+            Console.WriteLine("Please enter Currency that you need to be Convert To");
+            string TO_CUR = Console.ReadLine().ToUpper();
+            Console.WriteLine("Please Enter the Amount");
+            double Amt = int.Parse(Console.ReadLine());
+
+
+            double Fromresult;
+            double Toresult;
+            currencyExchangeObj.TryGetValue(From_CUR, out Fromresult);
+            
+                Console.WriteLine(Fromresult);
+
+            currencyExchangeObj.TryGetValue(TO_CUR, out Toresult);
+            
+               Console.WriteLine(Toresult);
+
+          double  FromvaluewithAmountinUsd = Fromresult * Amt;
+           double ExchangedValue = FromvaluewithAmountinUsd/Toresult;
+            Console.WriteLine(ExchangedValue+" "+ TO_CUR);
+        }
+
+
+    }
+}

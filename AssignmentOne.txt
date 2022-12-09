@@ -1,0 +1,147 @@
+                                                                           Assignment-1
+Debugging:
+To debug one has to choose debugging before running the actual program. Debugging is used to check the control flow of the code during the run time. After successful compilation of the program with out any compile time errors one can start the program through debugging by checking each line. After the control enters a line then the line is ready for execution and when control come out of line the line been executed. Through debugging one can check the value of the variables, parameters, data inside objects  by hovering on them.one need to click to the left side of the editor pane to start the debugging which reflects red color dot as shown in below pic .Unless debugging is completed program won’t be executed fully. 
+Debugging plays a major role to find run time errors.
+One can disable all break points and delete all break points a time. Click on red button to stop debugging.
+
+Common Visual studio shortcuts :
+Ctrl+f = find;
+Ctrl+shift+f = find & replace;
+F5 = debug;
+Step Over f10; -debugging
+Step into f11; -debugging
+step out shift+f11; -debugging
+ctrl+y = redu
+ctrl+z = undo
+ctrl+s = save;
+ctrl+shif+s = save as;
+ctrl+N = new file;
+shift f9 = quick watch.
+Garbage Collection:
+Garbage collection is a memory unit where when an object is initialized then for that object memory is allocated during the run time and disposes the memory when the object is no longer used and clear the memory to get ready for allocating memory to next object. basically, garbage collector clears memory as per the life time of an object. It’s an automatic process to allocation and dispose of memory.
+-Garbage collector cleans only heap memory.
+*Classes have access modifiers and return types.
+Using Classes Example:
+using System; //system is a library 
+namespace Assignment_1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter age");         
+           int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter firstName");
+            string f = Console.ReadLine();
+            Console.WriteLine("Enter location");
+            string l = Console.ReadLine();
+            information inf = new information(a, f, l);
+            inf.ContactDetails();
+        }
+    }
+   
+    public class information
+    {
+        int age;
+        string firstName;
+        string location;
+        public information(int ag, string fn, string ln)
+        {
+            this.age = ag;
+            this.firstName = fn;
+            this.location = ln;
+        }
+        public void ContactDetails( )
+        {
+            Console.WriteLine("Age is "+ this.age + "Name is "+ this.firstName + "Location is "+this.location);
+        }
+    }
+}
+Output:
+Enter age
+24
+Enter firstName
+hari
+Enter location
+hyd
+Age is 24Name is hariLocation is hyd
+
+*Struct is a value type 
+*The value types are placed on stack memory.
+Struct (Structure) Example:
+-Struct is a keyword for structure.
+-Structs default access modifier is internal.
+-It has constructors, parameter, methods, fields, parameters, constants.
+-it is used to hold small data values.
+-if new key word is not used to create object then need to assign the values manually to variables as the constructor will not work.
+Example: 
+using System;
+namespace Assignment_1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int length = 15;
+            int width = 12;
+            //with object 
+            areaofrectangle inf = new areaofrectangle(length,width);
+            inf.calculatearea();
+
+        }
+    }
+   
+    struct areaofrectangle
+    {
+        int lenght;
+        int width;
+
+        public areaofrectangle(int len, int wid)
+        {
+            this.lenght = len;
+            this.width = wid;
+           
+        }
+        public void calculatearea( )
+        {
+          int  area = lenght*width;
+            Console.WriteLine("area is"+""+area);
+        }
+    }
+}
+Output: area is180;
+
+Nullable types:
+One cannot assign a null value to a variable without specifically mentioning the nullable(?) to a variable.
+To my understanding if we are getting a null value from any other source and without nullable datatypes cannot handle that so we are explicitly mentioning the variable as nullable type to handle the compile time exceptions.
+We can make use of hasvalue method to verify whether if has the value or not.
+Nullable<T> can also written using ? like int? I;
+-nullable types are instances of System.Nullable<T> Struct.
+
+using System;
+namespace Assignment_1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            int? i = null;
+            if (i.HasValue)
+            {
+                Console.WriteLine(i.Value);
+            }
+            else
+            {
+                Console.WriteLine("null");
+            }
+            
+
+        }
+    }
+}
+
+
+
+
+
